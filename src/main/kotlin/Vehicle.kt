@@ -1,6 +1,6 @@
 import java.util.*
 
-data class Vehicle (val plate : String, val type :VehicleType, val arrivalTime: Calendar, val discountCard :String?){
+data class Vehicle (val plate : String, val type :VehicleType, val checkInTime: Calendar, val discountCard :String?){
     //function states that two Vehicles are equals if their plates are equal
     override fun equals(other: Any?): Boolean {
         if (other is Vehicle){

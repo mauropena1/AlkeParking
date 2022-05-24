@@ -3,8 +3,8 @@ import java.util.*
 data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20) {
 
     fun addVehicle(vehicle: Vehicle): Boolean {
-        return if (!vehicles.contains(vehicle)) {
-            if (maxVehicles > vehicles.count()) {
+        return if (checkDuplicate(vehicle)) {
+            if (maxVehicles > getCount()) {
                 vehicles.add(vehicle)
                 println("Welcome to AlkeParking!")
                 true
@@ -17,4 +17,9 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
             false
         }
     }
+
+    private fun getCount() : Int = vehicles.size
+
+    private fun checkDuplicate(vehicle: Vehicle): Boolean  = !vehicles.contains(vehicle)
+
 }

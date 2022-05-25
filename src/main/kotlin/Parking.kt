@@ -2,6 +2,10 @@ import java.util.*
 
 data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20) {
 
+    var totalVehicles = 0
+    var totalEarnings = 0
+    var vehiclesRecord: Pair<Int, Int> = Pair(totalVehicles, totalEarnings)
+
     fun addVehicle(vehicle: Vehicle): Boolean {
         return if (checkDuplicate(vehicle)) {
             if (maxVehicles > getCount()) {

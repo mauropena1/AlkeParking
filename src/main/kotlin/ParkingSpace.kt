@@ -4,6 +4,7 @@ import java.util.*
 data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
 
     fun checkOutVehicle(plate: String, type: VehicleType) {
+
         val vehicle = parking.vehicles.find { it.plate == plate }
         if (vehicle != null) {
             val parkedTimeInt = parkedTime.toInt()
@@ -27,6 +28,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     }
 
     fun onSuccess(totalAmount: Int) {
+        parking.vehiclesRecord = Pair(parking.totalVehicles + 1,parking.totalEarnings + totalAmount)
         println("Your total invoice is $$totalAmount")
     }
 

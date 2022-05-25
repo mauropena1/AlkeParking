@@ -9,14 +9,12 @@ data class ParkingSpace(var vehicle:Vehicle, val parking:Parking){
 
 
     fun checkOutVehicle( plate : String, type :VehicleType ) {
-        try {
-            val vehicle: Vehicle? = parking.vehicles.find { it.plate ==plate }
-
-            var type : VehicleType = vehicle?.type?:VehicleType.CAR
-            parkedTime= ((Calendar.getInstance().timeInMillis - checkInTime.timeInMillis) / 60000).toInt()
-
+        val vehicle = parking.vehicles.find { it.plate == plate }
+         if (vehicle != null){
+            parkedTime = ((Calendar.getInstance().timeInMillis - checkInTime.timeInMillis) / 60000).toInt()
             onSuccess(calculateFee(type, parkedTime))
-        }catch (e: ArithmeticException){
+            parking.vehicles.remove(vehicle)
+        }else {
             onError(plate)
         }
     }

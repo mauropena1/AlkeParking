@@ -27,7 +27,7 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
         println("${vehiclesRecord.first} vehicles have checked out and have earnings of ${vehiclesRecord.second}")
     }
 
-    fun getAllPlates() =vehicles.forEach { vehicle-> println(vehicle.plate)}
+    fun listVehicles() =vehicles.forEach { vehicle-> println("plate [${vehicle.plate}]")}
 
     private fun getCount() : Int = vehicles.size
 }

@@ -32,12 +32,12 @@ fun main(args: Array<String>) {
     val parkSpace2 =ParkingSpace(car3, parking1)
     parking1.addVehicle(car4)
     val parkSpace3 =ParkingSpace(car4, parking1)
-
+    parking1.listVehicles()
     parkSpace1.checkOutVehicle("CGHH-10",car1.type)
     parkSpace2.checkOutVehicle("MMDD-12",car3.type)
     parkSpace3.checkOutVehicle("CGHH-13",car4.type)
 
     parking1.showEarnings()
-    parking1.getAllPlates()
+
 
 }

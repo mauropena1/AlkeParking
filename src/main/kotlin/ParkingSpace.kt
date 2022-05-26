@@ -62,12 +62,16 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
 
 
     private fun onSuccess(totalAmount: Int) {
-        var totalCars=parking.apply {
-            totalVehicles+=1
-            totalEarnings+=totalAmount
-        }
+        incrementValues(totalAmount)
         parking.vehiclesRecord = Pair(parking.totalVehicles, parking.totalEarnings )
-        println("Your fee is $totalAmount. Come back soon." )
+        println("Your fee is $totalAmount. Come back soon.")
+    }
+
+    private fun incrementValues(totalAmount: Int) {
+        parking.apply {
+            totalVehicles += 1
+            totalEarnings += totalAmount
+        }
     }
 
 

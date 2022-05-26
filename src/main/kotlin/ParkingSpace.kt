@@ -25,7 +25,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
             }
             parking.vehicles.remove(vehicle)
         } else {
-            onError(plate)
+            onError()
         }
     }
 
@@ -67,7 +67,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     }
 
 
-    private fun onError(plate: String) {
+    private fun onError() {
         println("Sorry, the check-out failed")
     }
 }

@@ -24,10 +24,14 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
 
 
     fun showEarnings(){
-        println("${vehiclesRecord.first} vehicles have checked out and have earnings of ${vehiclesRecord.second}")
+        println("${vehiclesRecord.first} vehicles have checked out and have earnings of $${vehiclesRecord.second}")
     }
 
-    fun listVehicles() =vehicles.forEach { vehicle-> println("plate [${vehicle.plate}]")}
+
+    fun listVehicles(){
+        val plateList= vehicles.toList().map { "[${it.plate}]" }
+        println(plateList)
+    }
 
     private fun getCount() : Int = vehicles.size
 }

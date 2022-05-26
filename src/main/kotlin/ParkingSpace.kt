@@ -30,7 +30,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     }
 
 
-    fun calculateFee(type: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int {
+    private fun calculateFee(type: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int {
         if (parkedTime > 120) {
             val blocks = (parkedTime.toFloat() - 120) / 15
             val roundBlocks = (ceil(blocks)).toInt()
@@ -62,7 +62,11 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
 
 
     private fun onSuccess(totalAmount: Int) {
-        parking.vehiclesRecord = Pair(parking.totalVehicles + 1, parking.totalEarnings + totalAmount)
+        var totalCars=parking.apply {
+            totalVehicles+=1
+            totalEarnings+=totalAmount
+        }
+        parking.vehiclesRecord = Pair(parking.totalVehicles, parking.totalEarnings )
         println("Your fee is $totalAmount. Come back soon." )
     }
 

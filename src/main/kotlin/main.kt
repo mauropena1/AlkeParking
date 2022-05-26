@@ -27,11 +27,17 @@ fun main(args: Array<String>) {
     val cars = mutableSetOf<Vehicle>()
     val parking1 = Parking(cars)
     parking1.addVehicle(car1)
-    parking1.addVehicle(copycar1)
+    val parkSpace1 =ParkingSpace(car1, parking1)
+    parking1.addVehicle(car3)
+    val parkSpace2 =ParkingSpace(car3, parking1)
+    parking1.addVehicle(car4)
+    val parkSpace3 =ParkingSpace(car4, parking1)
 
+    parkSpace1.checkOutVehicle("CGHH-10",car1.type)
+    parkSpace2.checkOutVehicle("MMDD-12",car3.type)
+    parkSpace3.checkOutVehicle("CGHH-13",car4.type)
 
-
-
-
+    parking1.showEarnings()
+    parking1.getAllPlates()
 
 }

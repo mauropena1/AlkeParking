@@ -24,6 +24,12 @@ fun main(args: Array<String>) {
     val car21 =Vehicle("CGHH-40", VehicleType.CAR, Calendar.getInstance(), null)
     val car22 =Vehicle("MMDD-41", VehicleType.CAR, Calendar.getInstance(), "CARD1")
 
+    val cars = mutableSetOf<Vehicle>()
+    val parking1 = Parking(cars)
+    parking1.addVehicle(car1)
+    parking1.addVehicle(copycar1)
+
+
 
 
 

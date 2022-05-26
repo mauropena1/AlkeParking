@@ -36,7 +36,7 @@ private fun randomlyAddedVehicles(totalVehicles: Int) {
             val dCard = (0..2000).random()
             Vehicle("$plateLetters$plateNum", type, Calendar.getInstance(), "DC_$dCard")
         } else {
-            Vehicle("$plateLetters$plateNum", type, Calendar.getInstance(),null)
+            Vehicle("$plateLetters$plateNum", type, Calendar.getInstance())
         }
         parking.addVehicle(vehicle)
     }

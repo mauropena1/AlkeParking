@@ -1,4 +1,6 @@
 import java.util.*
+import kotlin.math.ceil
+import kotlin.math.roundToInt
 
 
 data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
@@ -15,16 +17,34 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         }
     }
 
-    fun calculateFee(type: VehicleType, time: Int): Int {
-        var totalAmount = 0
-        val base = type.price
-        val extraTimeParked = time - 120
-        totalAmount = if (time > 120) {
-            (extraTimeParked / 15) * 5 + base
+    fun calculateFee(type: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int {
+        if (parkedTime > 120) {
+            val blocks = (parkedTime.toFloat() - 120) / 15
+            val roundBlocks = (ceil(blocks)).toInt()
+            val totalPrice = when (type) {
+                VehicleType.CAR -> VehicleType.CAR.price + (roundBlocks * 5)
+                VehicleType.MOTORCYCLE -> VehicleType.MOTORCYCLE.price + (roundBlocks * 5)
+                VehicleType.BUS -> VehicleType.BUS.price + (roundBlocks * 5)
+                VehicleType.MINI_BUS -> VehicleType.MINI_BUS.price + (roundBlocks * 5)
+            }
+            return if (hasDiscountCard) {
+                (totalPrice * 0.85).roundToInt()
+            } else {
+                return totalPrice
+            }
         } else {
-            base
+            val totalPrice = when (type) {
+                VehicleType.CAR -> VehicleType.CAR.price
+                VehicleType.MOTORCYCLE -> VehicleType.MOTORCYCLE.price
+                VehicleType.BUS -> VehicleType.BUS.price
+                VehicleType.MINI_BUS -> VehicleType.MINI_BUS.price
+            }
+            return if (hasDiscountCard) {
+                (totalPrice * 0.85).roundToInt()
+            } else {
+                return totalPrice
+            }
         }
-        return totalAmount
     }
 
     fun onSuccess(totalAmount: Int) {

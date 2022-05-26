@@ -24,6 +24,10 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
 
     private fun getCount() : Int = vehicles.size
 
+    fun showEarnings(){
+        println("${vehiclesRecord.first} vehicles have checked out and have earnings of ${vehiclesRecord.second}")
+    }
+
 
 
 }

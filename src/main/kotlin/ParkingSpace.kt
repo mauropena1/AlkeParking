@@ -5,6 +5,14 @@ import kotlin.math.roundToInt
 
 data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     val MINUTES_IN_MILISECONDS =60000
+
+    /**
+     * Constant that store the total time that a vehicle stayed in the Parking Space in milliseconds
+     */
+    private val parkedTime: Long
+        get() = ((Calendar.getInstance().timeInMillis - vehicle.checkInTime.timeInMillis) / MINUTES_IN_MILISECONDS)
+
+
     fun checkOutVehicle(plate: String, type: VehicleType) {
 
         val vehicle = parking.vehicles.find { it.plate == plate }
@@ -20,6 +28,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
             onError(plate)
         }
     }
+
 
     fun calculateFee(type: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int {
         if (parkedTime > 120) {
@@ -51,16 +60,14 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         }
     }
 
-    fun onSuccess(totalAmount: Int) {
+
+    private fun onSuccess(totalAmount: Int) {
         parking.vehiclesRecord = Pair(parking.totalVehicles + 1, parking.totalEarnings + totalAmount)
         println("Your fee is $totalAmount. Come back soon." )
     }
 
-    fun onError(plate: String) {
+
+    private fun onError(plate: String) {
         println("Sorry, the check-out failed")
     }
-
-    //Constant that store the total time that a vehicle stayed in the Parking Space in milliseconds
-    val parkedTime: Long
-        get() = ((Calendar.getInstance().timeInMillis - vehicle.checkInTime.timeInMillis) / MINUTES_IN_MILISECONDS)
 }

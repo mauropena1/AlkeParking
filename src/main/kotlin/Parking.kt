@@ -1,10 +1,10 @@
 
 
 data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20) {
-
     var totalVehicles = 0
     var totalEarnings = 0
     var vehiclesRecord: Pair<Int, Int> = Pair(totalVehicles, totalEarnings)
+
 
     fun addVehicle(vehicle: Vehicle): Boolean {
 
@@ -22,12 +22,11 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
         }
     }
 
-    private fun getCount() : Int = vehicles.size
 
     fun showEarnings(){
         println("${vehiclesRecord.first} vehicles have checked out and have earnings of ${vehiclesRecord.second}")
     }
 
 
-
+    private fun getCount() : Int = vehicles.size
 }

@@ -1,4 +1,4 @@
-import java.util.*
+
 
 data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20) {
 
@@ -7,23 +7,23 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
     var vehiclesRecord: Pair<Int, Int> = Pair(totalVehicles, totalEarnings)
 
     fun addVehicle(vehicle: Vehicle): Boolean {
-        return if (checkDuplicate(vehicle)) {
-            if (maxVehicles > getCount()) {
-                vehicles.add(vehicle)
+
+        return if (maxVehicles > getCount()) {
+            if(vehicles.add(vehicle)){
                 println("Welcome to AlkeParking!")
                 true
-            } else {
-                println("Sorry, the check-in failed, the parking lot is full.")
+            }else{
+                println("Sorry, the check-in failed, the vehicle is already parked.")
                 false
             }
         } else {
-            println("Sorry, the check-in failed, the vehicle is already parked.")
+            println("Sorry, the check-in failed, the parking lot is full.")
             false
         }
     }
 
     private fun getCount() : Int = vehicles.size
 
-    private fun checkDuplicate(vehicle: Vehicle): Boolean  = !vehicles.contains(vehicle)
+
 
 }

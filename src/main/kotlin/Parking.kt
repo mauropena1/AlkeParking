@@ -30,7 +30,7 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
 
     fun listVehicles(){
         val plateList= vehicles.toList().map { "[${it.plate}]" }
-        println(plateList)
+        println("Parked Vehicles : $plateList")
     }
 
     private fun getCount() : Int = vehicles.size

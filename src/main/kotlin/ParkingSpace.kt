@@ -10,7 +10,11 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         val vehicle = parking.vehicles.find { it.plate == plate }
         if (vehicle != null) {
             val parkedTimeInt = parkedTime.toInt()
-            onSuccess(calculateFee(type, parkedTimeInt))
+            if (vehicle.discountCard != null) {
+                onSuccess(calculateFee(type, parkedTimeInt, true))
+            } else {
+                onSuccess(calculateFee(type, parkedTimeInt, false))
+            }
             parking.vehicles.remove(vehicle)
         } else {
             onError(plate)
@@ -48,7 +52,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     }
 
     fun onSuccess(totalAmount: Int) {
-        parking.vehiclesRecord = Pair(parking.totalVehicles + 1,parking.totalEarnings + totalAmount)
+        parking.vehiclesRecord = Pair(parking.totalVehicles + 1, parking.totalEarnings + totalAmount)
         println("Your total invoice is $$totalAmount")
     }
 

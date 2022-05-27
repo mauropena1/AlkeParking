@@ -6,7 +6,7 @@ import kotlin.math.roundToInt
 data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     /**
      * Constant that represent the miliseconds amount in one minute*/
-    val MINUTES_IN_MILISECONDS =60000
+    val MINUTES_IN_MILISECONDS = 60000
 
     /**
      * Constant that store the total time that a vehicle stayed in the Parking Space in milliseconds*/
@@ -32,7 +32,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         }
     }
 
-/**Function that calculates the final amount to pay, according the vehicle type, time parked, base fee and the discount card holding*/
+    /**Function that calculates the final amount to pay, according the vehicle type, time parked, base fee and the discount card holding*/
     private fun calculateFee(type: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int {
         if (parkedTime > 120) {
             val blocks = (parkedTime.toFloat() - 120) / 15
@@ -66,10 +66,11 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
     /**Function that shows the total amount to pay*/
     private fun onSuccess(totalAmount: Int) {
         incrementValues(totalAmount)
-        parking.vehiclesRecord = Pair(parking.totalVehicles, parking.totalEarnings )
+        parking.vehiclesRecord = Pair(parking.totalVehicles, parking.totalEarnings)
         println("Your fee is $totalAmount. Come back soon.")
     }
-/**With this function, it is setted a records of parked cars and the profit generated at that moment */
+
+    /**With this function, it is setted a records of parked cars and the profit generated at that moment */
     private fun incrementValues(totalAmount: Int) {
         parking.apply {
             totalVehicles += 1
@@ -77,7 +78,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         }
     }
 
-/**Function that shows a check out failed message*/
+    /**Function that shows a check out failed message*/
     private fun onError() {
         println("Sorry, the check-out failed")
     }

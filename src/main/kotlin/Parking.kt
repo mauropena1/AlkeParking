@@ -1,12 +1,12 @@
-
 /**
-*This class represents the parking of the program, which allows 20 cars max, and also store the list of vehicles parked
-*/
+ *This class represents the parking of the program, which allows 20 cars max, and also store the list of vehicles parked
+ */
 data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20) {
     var totalVehicles = 0
     var totalEarnings = 0
-   /**
-    * variable that store the total parked cars and the profits generated*/
+
+    /**
+     * variable that store the total parked cars and the profits generated*/
     var vehiclesRecord: Pair<Int, Int> = Pair(totalVehicles, totalEarnings)
 
 
@@ -14,10 +14,10 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
     fun addVehicle(vehicle: Vehicle): Boolean {
 
         return if (maxVehicles > getCount()) {
-            if(vehicles.add(vehicle)){
+            if (vehicles.add(vehicle)) {
                 println("Welcome to AlkeParking!")
                 true
-            }else{
+            } else {
                 println("Sorry, the check-in failed, the vehicle is already parked.")
                 false
             }
@@ -28,16 +28,16 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
     }
 
     /**Function that shows the retired cars amount, and the profit generated*/
-    fun showEarnings(){
+    fun showEarnings() {
         println("${vehiclesRecord.first} vehicles have checked out and have earnings of $${vehiclesRecord.second}")
     }
 
     /**This function shows the parked car's plates */
-    fun listVehicles(){
-        val plateList= vehicles.toList().map { "[${it.plate}]" }
+    fun listVehicles() {
+        val plateList = vehicles.toList().map { "[${it.plate}]" }
         println("Parked Vehicles : $plateList")
     }
 
     /**Function that store the amount of cars that are parking at the moment that a car is getting into the park*/
-    private fun getCount() : Int = vehicles.size
+    private fun getCount(): Int = vehicles.size
 }

@@ -15,7 +15,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
 
     /**Function that first of all, check if the car which plate received as parameter is parked. In case it is parked,
      *  calculates the parked time and the amount to pay, according if it has a discount card. And the car is removed from the parked cars list
-     * In case the car is not parked, shows a error message  */
+     * In case the car is not parked, shows an error message  */
     fun checkOutVehicle(plate: String, type: VehicleType) {
 
         val vehicle = parking.vehicles.find { it.plate == plate }
@@ -70,7 +70,7 @@ data class ParkingSpace(var vehicle: Vehicle, val parking: Parking) {
         println("Your fee is $totalAmount. Come back soon.")
     }
 
-    /**With this function, it is setted a records of parked cars and the profit generated at that moment */
+    /**With this function, it is increased and set a records of parked cars and the profit generated at that moment */
     private fun incrementValues(totalAmount: Int) {
         parking.apply {
             totalVehicles += 1

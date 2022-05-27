@@ -6,7 +6,7 @@ data class Parking(val vehicles: MutableSet<Vehicle>, var maxVehicles: Int = 20)
     var totalEarnings = 0
 
     /**
-     * variable that store the total parked cars and the profits generated*/
+     * variable that store the total of checkout cars and the profits generated*/
     var vehiclesRecord: Pair<Int, Int> = Pair(totalVehicles, totalEarnings)
 
 

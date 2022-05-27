@@ -1,6 +1,6 @@
 import java.util.*
 
-/**This class store the information about each parked car. The information correspond to its plate, vehicle type, how long stayed and the discount card(in case its has)*/
+/**This class allows to create an object Vehicle. This object receives parameters correspond to its plate, vehicle type, how long stayed and the discount card(in case its has)*/
 data class Vehicle(
     val plate: String,
     val type: VehicleType,

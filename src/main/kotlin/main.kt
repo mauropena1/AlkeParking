@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     randomlyCheckOut()
     parking.showEarnings()
 }
-
+/**Function that allows testing the code, generating and adding to the parking car different vehicles, in a randomly way*/
 private fun randomlyAddedVehicles(totalVehicles: Int) {
 
     for (i in 1..totalVehicles) {
@@ -41,7 +41,7 @@ private fun randomlyAddedVehicles(totalVehicles: Int) {
         parking.addVehicle(vehicle)
     }
 }
-
+/**This function retires vehicles from the park, in a randomly way*/
 private fun randomlyCheckOut() {
     val vehicleToRemove = parking.vehicles.random()
     val parkingSpace = ParkingSpace(vehicleToRemove,parking)

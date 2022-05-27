@@ -12,6 +12,7 @@ fun main(args: Array<String>) {
     randomlyCheckOut()
     randomlyCheckOut()
     parking.showEarnings()
+
 }
 
 /**Function that allows testing the code, generating and adding to the parking car different vehicles, in a randomly way*/

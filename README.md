@@ -12,15 +12,20 @@ https://github.com/mauropena1/AlkeParking
 
 java JDK must be installed
 [https://www.oracle.com/java/technologies/downloads/]
-check $ java -version
+check 
+``` 
+java -version
+```
 
 install Kotlin compiler 
 linux systems
+```
 sdk install kotlin
-
+```
 mac and brew
+```
 brew install kotlin
-
+```
 windows
 download zip file https://github.com/JetBrains/kotlin/releases/tag/v1.6.21
 

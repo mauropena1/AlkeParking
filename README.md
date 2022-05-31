@@ -31,4 +31,4 @@ kotlinc main.kt VehicleType.kt Vehicle.kt Parking.kt ParkingSpace.kt -include-ru
 
 java -jar main.jar 
 ```
-If every goes right, you should see a random test of checkin a and checkout cars ;)
+If every goes right, you should see a random test of checkin and checkout cars ;)

@@ -24,7 +24,7 @@ brew install kotlin
 windows
 download zip file https://github.com/JetBrains/kotlin/releases/tag/v1.6.21
 
-##Run project
+## Run project
 run in your terminal: 
 ```
 kotlinc main.kt VehicleType.kt Vehicle.kt Parking.kt ParkingSpace.kt -include-runtime -d main.jar

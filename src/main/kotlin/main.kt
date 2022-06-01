@@ -4,7 +4,7 @@ import java.util.*
 val cars = mutableSetOf<Vehicle>()
 val parking = Parking(cars)
 
-fun main(args: Array<String>) {
+fun main() {
     randomlyAddedVehicles(20)
     parking.listVehicles()
     randomlyCheckOut()
